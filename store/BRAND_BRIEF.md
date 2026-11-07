@@ -10,9 +10,11 @@
   - Accessories: jewelry, hair clips, phone charms, stickers, keychains
 - **Supplier requirements:** U.S.-based small businesses offering startup incentives: sample packs, net-30 terms, first-order / new-brand discounts, low MOQs, private label / custom tags.
 
-## Still open (confirm with owner)
-- Price tier: budget / mid / premium
-- Inventory model: bulk stock vs. print-on-demand vs. hybrid
-- Platform: Shopify (recommended) vs. custom
-- Startup budget for samples + first order
+## Confirmed decisions
+- **Price tier:** Premium (tees ~$60+, hoodies ~$110+, hats ~$45+). Requires heavyweight / garment-dyed blanks, quality prints, custom labels and packaging.
+- **Inventory model:** Print-on-demand (POD) — no upfront stock. Suppliers must integrate with Shopify or accept order forwarding, and support premium blanks + private label (inside-neck print / custom tags, branded packing slips).
+- **Platform:** Shopify.
+
+## Still open
+- Startup budget for samples (TBD)
 - Final business name + logo (Brand Builder)

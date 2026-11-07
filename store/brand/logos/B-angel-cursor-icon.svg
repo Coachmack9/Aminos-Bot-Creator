@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" role="img" aria-label="Concept B: winged cursor with halo"><style>@import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@900&amp;family=Pirata+One&amp;family=Space+Mono:wght@700&amp;display=swap");</style>
+            <defs><linearGradient id="bIri" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF6EC7"/><stop offset=".5" stop-color="#B9A2FF"/><stop offset="1" stop-color="#59D8FF"/></linearGradient></defs>
+            <ellipse cx="166" cy="38" rx="34" ry="9" fill="none" stroke="url(#bIri)" stroke-width="6"/>
+            <path d="M146 112 C110 70 62 70 30 92 C58 96 70 108 74 122 C54 122 44 132 40 146 C70 136 104 140 140 150 Z" fill="#E9ECF3"/>
+            <path d="M190 112 C226 70 274 70 306 92 C278 96 266 108 262 122 C282 122 292 132 296 146 C266 136 232 140 196 150 Z" fill="#E9ECF3"/>
+            <path d="M140 64 L140 196 L170 168 L190 214 L212 205 L192 160 L232 160 Z" fill="url(#bIri)" stroke="#FFFFFF" stroke-width="6" stroke-linejoin="round"/>
+          </svg>
