@@ -1,0 +1,268 @@
+<title>ANGELBYTE Storefront</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Pirata+One&family=Manrope:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap">
+<style>
+/* Layout: phone-first storefront. Dark "midnight modem" world, chrome type, one iridescent accent band (the ticker). Single deliberate dark theme. */
+:root{
+  --bg:#14112B; --bg2:#1C1838; --card:#221D44; --fg:#F3F1F8; --muted:#B4ADD6; --line:#352F63;
+  --pink:#FF6EC7; --lilac:#B9A2FF; --cyan:#59D8FF; --chrome:#C9CDD6;
+  --iri:linear-gradient(90deg,#FF6EC7,#B9A2FF 50%,#59D8FF);
+  --display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --black:"Pirata One","Old English Text MT",Georgia,serif;
+  --body:"Manrope","Helvetica Neue",Arial,sans-serif;
+  --mono:"Space Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:inherit}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.in{max-width:1120px;margin:0 auto}
+h1,h2,h3{margin:0;text-wrap:balance}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+button,.btn{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+
+/* Proto banner */
+.proto{background:#0A0818;color:var(--muted);font-family:var(--mono);font-size:.72rem;text-align:center;padding-block:6px;letter-spacing:.06em}
+
+/* Header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(20,17,43,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.bar nav{display:flex;gap:20px;font-weight:600;font-size:.92rem}
+.bar nav a{text-decoration:none;color:var(--muted)}
+.bar nav a:hover{color:var(--fg)}
+.logo svg{display:block;height:28px;width:auto}
+.cart{display:flex;align-items:center;gap:8px;background:none;border:1px solid var(--line);color:var(--fg);border-radius:99px;padding:6px 14px;font-family:var(--mono);font-size:.8rem}
+.cart b{background:var(--pink);color:#14112B;border-radius:99px;min-width:20px;height:20px;display:inline-grid;place-items:center;font-size:.72rem}
+@media (max-width:720px){.bar nav{display:none}}
+
+/* Hero */
+.hero{padding-block:clamp(40px,8vw,88px) clamp(32px,6vw,64px);display:grid;gap:28px;grid-template-columns:1.1fr .9fr;align-items:center}
+.hero>*{min-width:0}
+@media (max-width:820px){.hero{grid-template-columns:1fr}}
+.hero h1{font-family:var(--display);font-weight:900;font-size:clamp(2.2rem,7vw,4.4rem);line-height:.98;letter-spacing:-.02em}
+.hero h1 .chr{background:linear-gradient(180deg,#fff,#C9CDD6 45%,#6E7385 50%,#E9ECF3 62%,#9AA0B2);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1 .bl{font-family:var(--black);font-weight:400;letter-spacing:0;background:var(--iri);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lede{color:var(--muted);font-size:1.05rem;max-width:44ch}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:99px;padding:13px 24px;font-weight:700;border:0}
+.btn.pri{background:var(--fg);color:var(--bg)}
+.btn.pri:hover{background:var(--pink)}
+.btn.sec{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.btn.sec:hover{border-color:var(--lilac)}
+.drop{position:relative;aspect-ratio:1/1;max-width:100%;border-radius:12px;background:radial-gradient(120% 90% at 30% 20%,#3A2F7A 0%,#1C1838 55%,#14112B 100%);border:1px solid var(--line);overflow:hidden;display:grid;place-items:center}
+.drop svg{width:78%;height:auto}
+.tag{position:absolute;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;background:rgba(20,17,43,.8);border:1px solid var(--line);border-radius:99px;padding:5px 10px}
+.tag.t1{top:14px;left:14px}.tag.t2{bottom:14px;right:14px;color:var(--pink)}
+
+/* Ticker */
+.tick{background:var(--iri);color:#14112B;overflow:hidden;white-space:nowrap;font-family:var(--display);font-weight:700;font-size:.85rem;letter-spacing:.04em;padding-block:10px}
+.tick div{display:inline-block;animation:run 32s linear infinite}
+.tick span{padding-inline:22px}
+@keyframes run{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.tick div{animation:none}}
+
+/* Sections */
+section{padding-block:clamp(40px,7vw,72px)}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.sh h2{font-family:var(--display);font-weight:700;font-size:clamp(1.3rem,3.4vw,1.9rem)}
+.sh a{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+
+/* Categories */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media (max-width:820px){.cats{grid-template-columns:repeat(2,1fr)}}
+.cat{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:16px;text-decoration:none;display:grid;gap:10px;transition:border-color .2s}
+.cat:hover{border-color:var(--lilac)}
+.cat svg{width:100%;height:auto;aspect-ratio:1/1}
+.cat b{font-family:var(--display);font-size:.95rem}
+.cat small{font-family:var(--mono);color:var(--muted);font-size:.72rem}
+
+/* Products */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:460px){.grid{grid-template-columns:1fr}}
+.p{background:var(--bg2);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.p .img{aspect-ratio:4/5;display:grid;place-items:center;background:radial-gradient(90% 70% at 50% 35%,#2E2763,#1C1838 70%)}
+.p .img svg{width:76%;height:auto}
+.p .info{padding:14px 16px 16px;display:grid;gap:4px;align-content:start}
+.p .row{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.p h3{font-size:1rem;font-weight:700}
+.p .price{font-family:var(--mono);font-weight:700;white-space:nowrap}
+.p .col{color:var(--muted);font-size:.88rem}
+.p button{margin-top:10px;justify-self:start;background:none;border:1px solid var(--line);color:var(--fg);border-radius:99px;padding:8px 16px;font-size:.85rem;font-weight:600}
+.p button:hover{border-color:var(--pink);color:var(--pink)}
+.p button.done{border-color:var(--cyan);color:var(--cyan)}
+.badge{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:#14112B;background:var(--cyan);border-radius:4px;padding:2px 6px;justify-self:start}
+
+/* How it's made */
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;list-style:none;padding:0;margin:0;counter-reset:s}
+@media (max-width:820px){.how{grid-template-columns:1fr}}
+.how li{border-top:1px solid var(--line);padding-top:16px;display:grid;gap:6px;counter-increment:s}
+.how li::before{content:"0" counter(s);font-family:var(--mono);color:var(--pink);font-size:.8rem}
+.how b{font-family:var(--display);font-size:1rem}
+.how p{color:var(--muted);font-size:.94rem}
+
+/* Buddy list signup */
+.buddy{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:clamp(22px,5vw,44px);display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+.buddy>*{min-width:0}
+@media (max-width:820px){.buddy{grid-template-columns:1fr}}
+.buddy h2{font-family:var(--display);font-size:clamp(1.3rem,3.6vw,2rem)}
+.buddy h2 em{font-family:var(--black);font-style:normal;font-weight:400;color:var(--pink)}
+.buddy p{color:var(--muted)}
+.win{background:#0E0C1F;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.win .tb{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,#2E2763,#3A2F7A);padding:6px 10px;font-family:var(--mono);font-size:.72rem}
+.win .tb i{display:inline-flex;gap:4px}
+.win .tb i::before,.win .tb i::after{content:"";width:9px;height:9px;border-radius:2px;background:var(--chrome);opacity:.6}
+.win form{padding:16px;display:grid;gap:10px}
+.win label{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.08em}
+.win input{width:100%;background:#14112B;border:1px solid var(--line);color:var(--fg);border-radius:6px;padding:12px;font:inherit}
+.win input:focus{border-color:var(--lilac);outline:none}
+.win .msg{font-family:var(--mono);font-size:.78rem;color:var(--cyan);min-height:1.2em}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding-block:32px 40px;color:var(--muted);font-size:.88rem}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:20px}
+@media (max-width:720px){.fgrid{grid-template-columns:1fr 1fr}}
+.fgrid b{color:var(--fg);display:block;margin-bottom:6px;font-size:.85rem}
+.fgrid a{display:block;text-decoration:none;padding-block:2px}
+.fgrid a:hover{color:var(--fg)}
+.fine{margin-top:24px;font-family:var(--mono);font-size:.72rem}
+</style>
+
+<div class="proto gut">PROTOTYPE · placeholder products and art · checkout runs on Shopify at launch</div>
+
+<header class="gut">
+  <div class="in bar">
+    <a class="logo" href="#top" aria-label="ANGELBYTE home">
+      <svg viewBox="0 0 300 44" role="img" aria-label="ANGELBYTE">
+        <defs>
+          <linearGradient id="lgC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#C9CDD6"/><stop offset=".5" stop-color="#6E7385"/><stop offset=".62" stop-color="#E9ECF3"/><stop offset="1" stop-color="#9AA0B2"/></linearGradient>
+          <linearGradient id="lgI" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FF6EC7"/><stop offset=".5" stop-color="#B9A2FF"/><stop offset="1" stop-color="#59D8FF"/></linearGradient>
+        </defs>
+        <ellipse cx="22" cy="7" rx="13" ry="3.4" fill="none" stroke="url(#lgI)" stroke-width="2.2"/>
+        <text x="0" y="38" font-family="Unbounded, Arial Black, sans-serif" font-weight="900" font-size="32" letter-spacing="-1" fill="url(#lgC)" stroke="url(#lgI)" stroke-width=".8">ANGELBYTE</text>
+      </svg>
+    </a>
+    <nav aria-label="Main">
+      <a href="#shop">Shop</a><a href="#cats">Hats</a><a href="#cats">Bags</a><a href="#cats">Accessories</a><a href="#how">About</a>
+    </nav>
+    <button class="cart" id="cartBtn" aria-label="Cart">BAG <b id="cartCount">0</b></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <div class="gut">
+    <div class="in hero">
+      <div style="display:grid;gap:22px">
+        <span class="eyebrow">Drop 001 · Halo Collection</span>
+        <h1><span class="chr">LOGGED IN</span><br><span class="bl">since forever</span></h1>
+        <p class="lede">Premium Y2K pieces on heavyweight, garment-dyed blanks. Each one is printed in the USA after you order it, so nothing sits in a warehouse.</p>
+        <div class="ctas">
+          <a class="btn pri" href="#shop">Shop drop 001</a>
+          <a class="btn sec" href="#buddy">Get early access</a>
+        </div>
+      </div>
+      <div class="drop" aria-label="Featured: Halo Heavyweight Tee">
+        <span class="tag t1">FEATURED</span>
+        <span class="tag t2">HALO TEE · $64</span>
+        <div id="heroArt"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tick" aria-hidden="true"><div>
+    <span>✦ MADE TO ORDER IN THE USA</span><span>✦ HEAVYWEIGHT 6.5 OZ COTTON</span><span>✦ GARMENT-DYED + VINTAGE WASH</span><span>✦ FREE U.S. SHIPPING OVER $100</span><span>✦ HEAVEN ON DIAL-UP</span>
+    <span>✦ MADE TO ORDER IN THE USA</span><span>✦ HEAVYWEIGHT 6.5 OZ COTTON</span><span>✦ GARMENT-DYED + VINTAGE WASH</span><span>✦ FREE U.S. SHIPPING OVER $100</span><span>✦ HEAVEN ON DIAL-UP</span>
+  </div></div>
+
+  <section class="gut" id="cats">
+    <div class="in">
+      <div class="sh"><h2>Shop by category</h2></div>
+      <div class="cats" id="catGrid"></div>
+    </div>
+  </section>
+
+  <section class="gut" id="shop" style="padding-top:0">
+    <div class="in">
+      <div class="sh"><h2>Drop 001</h2><a href="#shop">View all →</a></div>
+      <div class="grid" id="prodGrid"></div>
+    </div>
+  </section>
+
+  <section class="gut" id="how" style="padding-top:0">
+    <div class="in">
+      <div class="sh"><h2>How your piece gets made</h2></div>
+      <ol class="how">
+        <li><b>You order</b><p>Pick your fit and size. We don't keep warehouse stock, so we never overproduce.</p></li>
+        <li><b>We print it</b><p>Our U.S. partner prints it on a heavyweight, garment-dyed blank and adds the ANGELBYTE neck label.</p></li>
+        <li><b>It ships to you</b><p>Packed in branded packaging and on its way, usually within 3–7 business days.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="gut" id="buddy" style="padding-top:0">
+    <div class="in buddy">
+      <div style="display:grid;gap:12px">
+        <span class="eyebrow">Early access</span>
+        <h2>Join the <em>buddy list</em></h2>
+        <p>Get first dibs on drops, restock alerts, and 10% off your first order.</p>
+      </div>
+      <div class="win">
+        <div class="tb"><span>buddy_list.exe</span><i></i></div>
+        <form id="signup" novalidate>
+          <label for="email">SCREEN NAME (YOUR EMAIL)</label>
+          <input id="email" type="email" placeholder="you@email.com" autocomplete="email" required>
+          <button class="btn pri" type="submit">Sign me up</button>
+          <div class="msg" id="msg" role="status"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="gut">
+  <div class="in">
+    <div class="fgrid">
+      <div><b>ANGELBYTE</b>Premium Y2K goods, made to order in the USA.</div>
+      <div><b>Shop</b><a href="#shop">Apparel</a><a href="#cats">Hats</a><a href="#cats">Bags</a><a href="#cats">Accessories</a></div>
+      <div><b>Help</b><a href="#top">Shipping</a><a href="#top">Returns</a><a href="#top">Size guide</a><a href="#top">FAQ</a></div>
+      <div><b>Follow</b><a href="#top">Instagram</a><a href="#top">TikTok</a><a href="#top">Pinterest</a></div>
+    </div>
+    <p class="fine">© 2026 ANGELBYTE · Prototype for review · Prices and products are placeholders</p>
+  </div>
+</footer>
+
+<script>
+const I='<defs><linearGradient id="ig" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF6EC7"/><stop offset=".5" stop-color="#B9A2FF"/><stop offset="1" stop-color="#59D8FF"/></linearGradient></defs>';
+const halo=(x,y,s=1)=>`<ellipse cx="${x}" cy="${y}" rx="${16*s}" ry="${4.5*s}" fill="none" stroke="url(#ig)" stroke-width="${3*s}"/>`;
+const word=(x,y,sz,c)=>`<text x="${x}" y="${y}" text-anchor="middle" font-family="Unbounded, Arial Black, sans-serif" font-weight="900" font-size="${sz}" fill="${c}">ANGELBYTE</text>`;
+const art={
+  tee:(c,ink)=>`<svg viewBox="0 0 200 200" aria-hidden="true">${I}<path d="M60 30 L85 22 Q100 36 115 22 L140 30 L176 60 L156 82 L145 74 L145 178 L55 178 L55 74 L44 82 L24 60 Z" fill="${c}"/><path d="M85 22 Q100 36 115 22" fill="none" stroke="rgba(0,0,0,.25)" stroke-width="3"/>${halo(100,70)}${word(100,96,13,ink)}</svg>`,
+  baby:(c,ink)=>`<svg viewBox="0 0 200 200" aria-hidden="true">${I}<path d="M68 34 L88 28 Q100 38 112 28 L132 34 L158 54 L146 68 L138 62 L140 150 L60 150 L62 62 L54 68 L42 54 Z" fill="${c}"/><path d="M100 70 l4 12 12 4 -12 4 -4 12 -4 -12 -12 -4 12 -4z" fill="${ink}"/>${word(100,122,10,ink)}</svg>`,
+  hoodie:(c,ink)=>`<svg viewBox="0 0 200 200" aria-hidden="true">${I}<path d="M74 34 Q100 6 126 34 L118 44 Q100 30 82 44 Z" fill="${c}" opacity=".85"/><path d="M62 36 L82 30 Q100 46 118 30 L138 36 L176 72 L160 90 L148 80 L148 182 L52 182 L52 80 L40 90 L24 72 Z" fill="${c}"/><path d="M76 140 L124 140 L132 168 L68 168 Z" fill="rgba(0,0,0,.18)"/><path d="M92 62 L92 112 L102 103 L108 118 L115 115 L109 100 L122 100 Z" fill="url(#ig)" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>${halo(104,54,.7)}</svg>`,
+  hat:(c,ink)=>`<svg viewBox="0 0 200 200" aria-hidden="true">${I}<path d="M48 122 Q46 56 100 54 Q154 56 152 122 Z" fill="${c}"/><path d="M118 58 Q150 64 152 122 L132 122 Q132 80 118 58Z" fill="rgba(0,0,0,.18)"/><path d="M36 122 Q100 138 178 118 Q118 156 36 134 Z" fill="#9AA0B2"/>${halo(96,76,.8)}${word(96,104,11,ink)}</svg>`,
+  tote:(c,ink)=>`<svg viewBox="0 0 200 200" aria-hidden="true">${I}<path d="M74 70 Q74 26 100 26 Q126 26 126 70" fill="none" stroke="#9AA0B2" stroke-width="7"/><rect x="46" y="64" width="108" height="118" rx="4" fill="${c}"/><circle cx="100" cy="116" r="30" fill="url(#ig)"/><circle cx="100" cy="116" r="9" fill="${c}"/>${word(100,168,10,ink)}</svg>`,
+  charm:(c,ink)=>`<svg viewBox="0 0 200 200" aria-hidden="true">${I}<path d="M100 20 L100 72" stroke="#C9CDD6" stroke-width="3" stroke-dasharray="5 4"/><circle cx="100" cy="76" r="6" fill="none" stroke="#C9CDD6" stroke-width="3"/><path d="M100 84 l14 34 36 4 -28 22 10 36 -32 -20 -32 20 10 -36 -28 -22 36 -4z" fill="url(#ig)" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg>`
+};
+const products=[
+  {n:"Halo Heavyweight Tee",c:"Washed Black",p:64,a:"tee",f:"#2A2730",i:"#E9ECF3",b:"BESTSELLER"},
+  {n:"Dial-Up Baby Tee",c:"Bubblegum",p:58,a:"baby",f:"#FF8FD3",i:"#14112B"},
+  {n:"Angel Cursor Hoodie",c:"Lilac Glitter",p:118,a:"hoodie",f:"#B9A2FF",i:"#14112B",b:"NEW"},
+  {n:"Chrome Logo Trucker",c:"Silver / Midnight",p:46,a:"hat",f:"#3A3566",i:"#E9ECF3"},
+  {n:"Screensaver Tote",c:"Frosted Tip",p:52,a:"tote",f:"#E9E6F2",i:"#14112B"},
+  {n:"Sparkle Phone Charm",c:"Iridescent",p:28,a:"charm",f:"",i:""}
+];
+const cats=[["Apparel","Tees · baby tees · hoodies","tee","#2A2730","#E9ECF3"],["Hats","Truckers · dad caps · beanies","hat","#3A3566","#E9ECF3"],["Bags","Totes · mini bags","tote","#E9E6F2","#14112B"],["Accessories","Charms · stickers · clips","charm","",""]];
+document.getElementById('heroArt').innerHTML=art.tee("#2A2730","#E9ECF3");
+document.getElementById('catGrid').innerHTML=cats.map(([n,s,a,f,i])=>`<a class="cat" href="#shop">${art[a](f,i)}<b>${n}</b><small>${s}</small></a>`).join('');
+document.getElementById('prodGrid').innerHTML=products.map((x,k)=>`<article class="p"><div class="img">${art[x.a](x.f,x.i)}</div><div class="info">${x.b?`<span class="badge">${x.b}</span>`:''}<div class="row"><h3>${x.n}</h3><span class="price">$${x.p}</span></div><span class="col">${x.c} · sample</span><button type="button" data-k="${k}">Add to bag</button></div></article>`).join('');
+let count=0;const cc=document.getElementById('cartCount');
+document.getElementById('prodGrid').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;count++;cc.textContent=count;b.textContent='Added ✓';b.classList.add('done');setTimeout(()=>{b.textContent='Add to bag';b.classList.remove('done')},1600)});
+document.getElementById('signup').addEventListener('submit',e=>{e.preventDefault();const v=document.getElementById('email').value.trim();const m=document.getElementById('msg');if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){m.textContent='Enter a valid email, like you@email.com.';return}m.textContent='Added to the buddy list (prototype, nothing was sent).';e.target.reset()});
+</script>

@@ -15,6 +15,9 @@
 - **Inventory model:** Print-on-demand (POD) — no upfront stock. Suppliers must integrate with Shopify or accept order forwarding, and support premium blanks + private label (inside-neck print / custom tags, branded packing slips).
 - **Platform:** Shopify.
 
+- **Business name:** ANGELBYTE (tagline: Heaven on dial-up)
+- **Primary logo:** Concept A, chrome wordmark (`store/brand/logos/A-chrome-wordmark.svg`)
+
 ## Still open
 - Startup budget for samples (TBD)
-- Final business name + logo (Brand Builder)
+- USPTO trademark search + domain/handle check for ANGELBYTE
