@@ -1,7 +1,7 @@
 # ANGELBYTE — Brand Guide (draft 1)
 
 **Tagline:** Heaven on dial-up
-**Positioning:** Premium Y2K-vintage streetwear for 17–29 year olds, printed on demand in the USA.
+**Positioning:** Y2K-vintage streetwear at mid-range prices ($30–60) for 17–29 year olds, printed on demand in the USA.
 
 ## Name status
 Lead: **ANGELBYTE**. A quick web search found no apparel brand using it.
@@ -34,7 +34,7 @@ Iridescent gradient: #FF6EC7 → #B9A2FF → #59D8FF
 - Labels/data: **Space Mono**
 
 ## Voice
-Confident, playful, a little nostalgic. Lowercase on social. Premium, so no discount-bin hype.
+Confident, playful, a little nostalgic. Lowercase on social. Quality at a fair price, so no discount-bin hype.
 - brb, logging into my main character era. drop 001 is live.
 - made to order, so nothing sits in a warehouse. just you and your fit.
 - away message: out wearing angelbyte. back never.

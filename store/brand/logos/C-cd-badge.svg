@@ -5,7 +5,7 @@
             </defs>
             <circle cx="120" cy="120" r="108" fill="url(#cDisc)"/>
             <circle cx="120" cy="120" r="108" fill="none" stroke="#FFFFFF" stroke-width="2" opacity=".7"/>
-            <text font-family="Space Mono, monospace" font-weight="700" font-size="13" letter-spacing="4" fill="#14112B"><textPath href="#cArc">ANGELBYTE · PREMIUM GOODS · EST. 2026 ·</textPath></text>
+            <text font-family="Space Mono, monospace" font-weight="700" font-size="13" letter-spacing="4" fill="#14112B"><textPath href="#cArc">ANGELBYTE · QUALITY GOODS · EST. 2026 ·</textPath></text>
             <circle cx="120" cy="120" r="40" fill="#14112B"/>
             <text x="120" y="133" text-anchor="middle" font-family="Pirata One, Georgia, serif" font-size="40" fill="#FFFFFF">ab</text>
             <circle cx="120" cy="120" r="9" fill="#F3F1F8"/>
