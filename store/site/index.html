@@ -1,0 +1,247 @@
+<title>SOFT HOURS Storefront</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=DM+Sans:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: phone-first storefront that feels like a made bed. Oat-milk light theme, "after hours" cocoa dark theme; rounded pillow-like panels, generous space, no hard edges. */
+:root{
+  --bg:#EFE8DC; --bg2:#E7DED0; --card:#F8F4EC; --fg:#3E302A; --muted:#7A6A60; --line:#DCD2C3;
+  --sage:#9DB09A; --butter:#F2DC8C; --lav:#C8BEDD; --cocoa:#7A5C4F; --btn:#3E302A; --btnfg:#F8F4EC;
+  --display:"Fredoka","Arial Rounded MT Bold",system-ui,sans-serif;
+  --body:"DM Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"DM Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1F1916; --bg2:#272019; --card:#2C241F; --fg:#F1EAE0; --muted:#BFB2A6; --line:#3D332C; --btn:#F2DC8C; --btnfg:#2A211C; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1F1916; --bg2:#272019; --card:#2C241F; --fg:#F1EAE0; --muted:#BFB2A6; --line:#3D332C; --btn:#F2DC8C; --btnfg:#2A211C; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:inherit}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.in{max-width:1120px;margin:0 auto}
+h1,h2,h3{margin:0;text-wrap:balance}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--cocoa);outline-offset:3px}
+
+.proto{background:var(--bg2);color:var(--muted);font-family:var(--mono);font-size:.72rem;text-align:center;padding-block:6px}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.bar nav{display:flex;gap:22px;font-weight:600;font-size:.93rem}
+.bar nav a{text-decoration:none;color:var(--muted)}
+.bar nav a:hover{color:var(--fg)}
+.logo{display:flex;align-items:center;gap:4px;text-decoration:none;font-family:var(--display);font-weight:700;font-size:1.55rem;letter-spacing:-.02em}
+.logo{gap:8px}
+.logo svg{width:40px;height:auto}
+.cart{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);color:var(--fg);border-radius:99px;padding:7px 14px;font-weight:600;font-size:.88rem}
+.cart b{background:var(--sage);color:#2A211C;border-radius:99px;min-width:20px;height:20px;display:inline-grid;place-items:center;font-size:.72rem}
+@media (max-width:720px){.bar nav{display:none}}
+
+.hero{padding-block:clamp(36px,7vw,80px) clamp(28px,5vw,56px);display:grid;gap:28px;grid-template-columns:1fr 1fr;align-items:center}
+.hero>*{min-width:0}
+@media (max-width:820px){.hero{grid-template-columns:1fr}}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(2.6rem,8vw,5rem);line-height:.95;letter-spacing:-.03em}
+.hero h1 span{color:var(--cocoa)}
+.hero .lede{color:var(--muted);font-size:1.08rem;max-width:42ch}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:99px;padding:14px 26px;font-weight:700;border:0}
+.btn.pri{background:var(--btn);color:var(--btnfg)}
+.btn.sec{background:transparent;color:var(--fg);border:1.5px solid var(--line)}
+.btn.sec:hover{border-color:var(--cocoa)}
+.set{position:relative;background:var(--lav);border-radius:36px;aspect-ratio:1/1;max-width:100%;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:8%;overflow:hidden}
+.set svg{width:100%;height:auto}
+.set .cloud{position:absolute;opacity:.55}
+.set .lbl{position:absolute;left:18px;bottom:18px;background:#F8F4EC;color:#3E302A;border-radius:99px;padding:8px 14px;font-weight:700;font-size:.85rem}
+.set .lbl s{color:#7A6A60;font-weight:400;margin-left:6px}
+
+.perks{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px;padding-block:16px;border-block:1px solid var(--line);font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.perks span::before{content:"☁ ";color:var(--sage)}
+
+section{padding-block:clamp(40px,7vw,72px)}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.sh h2{font-family:var(--display);font-weight:600;font-size:clamp(1.5rem,3.6vw,2.1rem);letter-spacing:-.01em}
+.sh a{font-weight:600;font-size:.88rem;color:var(--muted)}
+
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media (max-width:820px){.cats{grid-template-columns:repeat(2,1fr)}}
+.cat{border-radius:26px;padding:18px;text-decoration:none;display:grid;gap:8px;color:#3E302A}
+.cat svg{width:100%;height:auto;aspect-ratio:1/1}
+.cat b{font-family:var(--display);font-weight:600;font-size:1.05rem}
+.cat small{font-size:.8rem;opacity:.75}
+.cat:hover{transform:translateY(-2px)}
+@media (prefers-reduced-motion:no-preference){.cat{transition:transform .2s}}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:460px){.grid{grid-template-columns:1fr}}
+.p{background:var(--card);border:1px solid var(--line);border-radius:26px;overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.p .img{aspect-ratio:4/5;display:grid;place-items:center;background:var(--bg2)}
+.p .img svg{width:72%;height:auto}
+.p .info{padding:14px 18px 18px;display:grid;gap:4px;align-content:start}
+.p .row{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.p h3{font-size:1.02rem;font-weight:700}
+.p .price{font-weight:700;white-space:nowrap}
+.p .col{color:var(--muted);font-size:.88rem}
+.p button{margin-top:10px;justify-self:start;background:none;border:1.5px solid var(--line);color:var(--fg);border-radius:99px;padding:8px 18px;font-size:.87rem;font-weight:600}
+.p button:hover{border-color:var(--cocoa)}
+.p button.done{background:var(--sage);border-color:var(--sage);color:#2A211C}
+.badge{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:#3E302A;background:var(--butter);border-radius:99px;padding:2px 8px;justify-self:start}
+
+.bundle{background:var(--sage);color:#2A211C;border-radius:36px;padding:clamp(24px,5vw,48px);display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
+.bundle>*{min-width:0}
+@media (max-width:820px){.bundle{grid-template-columns:1fr}}
+.bundle h2{font-family:var(--display);font-weight:700;font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:-.02em}
+.bundle p{max-width:46ch}
+.bundle .btn{background:#2A211C;color:#F8F4EC;justify-self:start}
+.bundle .math{background:#F8F4EC;border-radius:22px;padding:18px 20px;display:grid;gap:6px;font-size:.95rem}
+.bundle .math div{display:flex;justify-content:space-between;gap:12px}
+.bundle .math .tot{border-top:1px dashed #9DB09A;padding-top:8px;font-weight:700}
+
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;list-style:none;padding:0;margin:0;counter-reset:s}
+@media (max-width:820px){.how{grid-template-columns:1fr}}
+.how li{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;display:grid;gap:6px;counter-increment:s}
+.how li::before{content:counter(s);font-family:var(--display);font-weight:700;background:var(--butter);color:#3E302A;width:32px;height:32px;border-radius:50%;display:grid;place-items:center}
+.how b{font-family:var(--display);font-weight:600;font-size:1.08rem}
+.how p{color:var(--muted);font-size:.94rem}
+
+.club{background:var(--card);border:1px solid var(--line);border-radius:36px;padding:clamp(24px,5vw,48px);display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+.club>*{min-width:0}
+@media (max-width:820px){.club{grid-template-columns:1fr}}
+.club h2{font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,3.8vw,2.2rem)}
+.club p{color:var(--muted)}
+.club form{display:grid;gap:10px}
+.club label{font-weight:600;font-size:.88rem}
+.club .fld{display:flex;gap:8px;flex-wrap:wrap}
+.club input{flex:1 1 200px;min-width:0;background:var(--bg);border:1.5px solid var(--line);color:var(--fg);border-radius:99px;padding:13px 18px;font:inherit}
+.club input:focus{border-color:var(--cocoa);outline:none}
+.club .msg{font-size:.88rem;color:var(--cocoa);min-height:1.3em}
+
+footer{border-top:1px solid var(--line);padding-block:32px 40px;color:var(--muted);font-size:.9rem}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:20px}
+@media (max-width:720px){.fgrid{grid-template-columns:1fr 1fr}}
+.fgrid b{color:var(--fg);display:block;margin-bottom:6px}
+.fgrid a{display:block;text-decoration:none;padding-block:2px}
+.fgrid a:hover{color:var(--fg)}
+.fine{margin-top:24px;font-family:var(--mono);font-size:.72rem}
+</style>
+
+<div class="proto gut">PROTOTYPE · placeholder products and art · checkout runs on Shopify at launch</div>
+
+<header class="gut">
+  <div class="in bar">
+    <a class="logo" href="#top" aria-label="soft hours home"><svg viewBox="40 28 144 96" aria-hidden="true"><g fill="#C8BEDD"><circle cx="72" cy="92" r="32"/><circle cx="112" cy="70" r="42"/><circle cx="152" cy="92" r="32"/><rect x="72" y="92" width="80" height="32"/></g><g stroke="#3E302A" stroke-width="8" stroke-linecap="round" fill="none"><path d="M112 90 L112 66"/><path d="M112 90 L130 100"/></g><circle cx="112" cy="90" r="7" fill="#3E302A"/></svg>soft hours</a>
+    <nav aria-label="Main"><a href="#shop">Shop</a><a href="#set">Sets</a><a href="#cats">Hats</a><a href="#cats">Accessories</a><a href="#how">About</a></nav>
+    <button class="cart" type="button" aria-label="Cart">Bag <b id="cartCount">0</b></button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="gut">
+    <div class="in hero">
+      <div style="display:grid;gap:22px">
+        <span class="eyebrow">Fall drop · The Cloud Collection</span>
+        <h1>stay in.<br><span>stay soft.</span></h1>
+        <p class="lede">Brushed fleece hoodies, sweats and slow-morning basics in calm, washed colors. Each piece is printed in the USA after you order it.</p>
+        <div class="ctas"><a class="btn pri" href="#shop">Shop the drop</a><a class="btn sec" href="#set">Build the Cloud Set</a></div>
+      </div>
+      <div class="set" aria-label="The Cloud Set: hoodie and sweatpants">
+        <svg class="cloud" viewBox="0 0 200 120" style="width:46%;top:6%;right:-6%" aria-hidden="true"><g fill="#F8F4EC"><circle cx="60" cy="70" r="30"/><circle cx="100" cy="52" r="40"/><circle cx="140" cy="70" r="30"/><rect x="60" y="70" width="80" height="30"/></g></svg>
+        <div id="heroHoodie"></div><div id="heroSweats"></div>
+        <span class="lbl">The Cloud Set · $99<s>$110</s></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="gut"><div class="in perks"><span>Made to order in the USA</span><span>Brushed-back fleece</span><span>Free U.S. shipping over $75</span><span>Ships in 3–7 business days</span></div></div>
+
+  <section class="gut" id="cats"><div class="in">
+    <div class="sh"><h2>Shop by category</h2></div>
+    <div class="cats" id="catGrid"></div>
+  </div></section>
+
+  <section class="gut" id="shop" style="padding-top:0"><div class="in">
+    <div class="sh"><h2>The Cloud Collection</h2><a href="#shop">View all →</a></div>
+    <div class="grid" id="prodGrid"></div>
+  </div></section>
+
+  <section class="gut" id="set" style="padding-top:0"><div class="in bundle">
+    <div style="display:grid;gap:14px">
+      <span class="eyebrow" style="color:#2A211C;opacity:.7">Matching set</span>
+      <h2>Build the Cloud Set</h2>
+      <p>Pair any hoodie with any sweatpants in matching or mixed colors, and save $11. It's the outfit for 8am classes, airport days and doing absolutely nothing.</p>
+      <a class="btn" href="#shop">Pick your colors</a>
+    </div>
+    <div class="math" aria-label="Set pricing">
+      <div><span>Cloud Fleece Hoodie</span><span>$58</span></div>
+      <div><span>Sunday Sweatpants</span><span>$52</span></div>
+      <div class="tot"><span>Set price</span><span>$99</span></div>
+    </div>
+  </div></section>
+
+  <section class="gut" id="how" style="padding-top:0"><div class="in">
+    <div class="sh"><h2>Made just for you</h2></div>
+    <ol class="how">
+      <li><b>You order</b><p>Pick your color and size. We don't keep warehouse stock, so nothing goes to waste.</p></li>
+      <li><b>We make it</b><p>Our U.S. partner prints your piece on soft brushed fleece and adds the soft hours label.</p></li>
+      <li><b>It ships to you</b><p>Folded, packed, and on its way, usually within 3–7 business days.</p></li>
+    </ol>
+  </div></section>
+
+  <section class="gut" style="padding-top:0"><div class="in club">
+    <div style="display:grid;gap:12px">
+      <span class="eyebrow">The Stay In Club</span>
+      <h2>Get 10% off your first order</h2>
+      <p>Join the list for new colors, restock alerts and the occasional cozy playlist. No spam, just soft stuff.</p>
+    </div>
+    <form id="signup" novalidate>
+      <label for="email">Email</label>
+      <div class="fld"><input id="email" type="email" placeholder="you@email.com" autocomplete="email" required><button class="btn pri" type="submit">Join</button></div>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+  </div></section>
+</main>
+
+<footer class="gut"><div class="in">
+  <div class="fgrid">
+    <div><svg viewBox="0 0 260 180" width="150" role="img" aria-label="Stay In Club label" style="display:block;margin-bottom:8px"><rect x="30" y="40" width="200" height="100" rx="18" fill="#9DB09A"/><rect x="40" y="50" width="180" height="80" rx="12" fill="none" stroke="#F8F4EC" stroke-width="2" stroke-dasharray="4 5"/><text x="130" y="96" text-anchor="middle" font-family="Fredoka, Arial Rounded MT Bold, sans-serif" font-weight="700" font-size="30" fill="#F8F4EC">soft hours</text><text x="130" y="118" text-anchor="middle" font-family="DM Mono, monospace" font-size="10" letter-spacing="2.5" fill="#F8F4EC">STAY IN CLUB · EST. 2026</text></svg>Cozy loungewear, made to order in the USA.</div>
+    <div><b>Shop</b><a href="#shop">Hoodies &amp; sweats</a><a href="#set">Sets</a><a href="#cats">Hats</a><a href="#cats">Accessories</a></div>
+    <div><b>Help</b><a href="#top">Shipping</a><a href="#top">Returns</a><a href="#top">Size guide</a><a href="#top">FAQ</a></div>
+    <div><b>Follow</b><a href="#top">Instagram</a><a href="#top">TikTok</a><a href="#top">Pinterest</a></div>
+  </div>
+  <p class="fine">© 2026 SOFT HOURS · Prototype for review · Prices and products are placeholders</p>
+</div></footer>
+
+<script>
+const ink="#3E302A";
+const mark=(x,y,s,c)=>`<text x="${x}" y="${y}" text-anchor="middle" font-family="Fredoka, Arial Rounded MT Bold, sans-serif" font-weight="700" font-size="${s}" fill="${c}">soft hours</text>`;
+const art={
+  hoodie:(c,t)=>`<svg viewBox="0 0 200 200" aria-hidden="true"><path d="M72 36 Q100 4 128 36 L120 46 Q100 32 80 46 Z" fill="${c}" style="filter:brightness(.9)"/><path d="M60 38 Q70 32 82 32 Q100 48 118 32 Q130 32 140 38 L178 76 Q170 88 160 92 L148 82 L150 184 Q100 192 50 184 L52 82 L40 92 Q30 88 22 76 Z" fill="${c}"/><path d="M74 138 L126 138 Q132 156 130 168 L70 168 Q68 156 74 138Z" fill="rgba(0,0,0,.08)"/><path d="M94 46 L92 72 M106 46 L108 72" stroke="${t}" stroke-width="2.5" stroke-linecap="round" opacity=".6"/>${mark(100,112,15,t)}</svg>`,
+  sweats:(c,t)=>`<svg viewBox="0 0 200 200" aria-hidden="true"><rect x="56" y="18" width="88" height="18" rx="8" fill="${c}" style="filter:brightness(.92)"/><path d="M58 34 L142 34 Q150 100 150 168 L110 170 Q104 110 100 76 Q96 110 90 170 L50 168 Q50 100 58 34Z" fill="${c}"/><rect x="48" y="164" width="44" height="16" rx="7" fill="${c}" style="filter:brightness(.9)"/><rect x="108" y="164" width="44" height="16" rx="7" fill="${c}" style="filter:brightness(.9)"/><path d="M96 36 L92 54 M104 36 L108 54" stroke="${t}" stroke-width="2.5" stroke-linecap="round" opacity=".6"/>${mark(130,64,8,t)}</svg>`,
+  crew:(c,t)=>`<svg viewBox="0 0 200 200" aria-hidden="true"><path d="M62 32 Q72 28 84 28 Q100 40 116 28 Q128 28 138 32 L176 104 Q168 112 160 114 L146 80 L148 176 Q100 184 52 176 L54 80 L40 114 Q32 112 24 104 Z" fill="${c}"/><path d="M84 28 Q100 40 116 28" fill="none" stroke="rgba(0,0,0,.15)" stroke-width="5"/>${mark(100,88,16,t)}</svg>`,
+  tee:(c,t)=>`<svg viewBox="0 0 200 200" aria-hidden="true"><path d="M56 34 Q68 28 84 26 Q100 38 116 26 Q132 28 144 34 L182 66 Q174 80 162 84 L150 78 L150 172 Q100 178 50 172 L50 78 L38 84 Q26 80 18 66 Z" fill="${c}"/><path d="M84 26 Q100 38 116 26" fill="none" stroke="rgba(0,0,0,.15)" stroke-width="4"/><g transform="translate(100 92)"><circle r="14" fill="${t}" opacity=".9"/><circle cx="6" cy="-4" r="12" fill="${c}"/></g>${mark(100,128,12,t)}</svg>`,
+  beanie:(c,t)=>`<svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="44" r="16" fill="${c}" style="filter:brightness(1.1)"/><path d="M48 144 Q46 56 100 56 Q154 56 152 144 Z" fill="${c}"/><rect x="42" y="118" width="116" height="40" rx="14" fill="${c}" style="filter:brightness(.9)"/><g fill="#C8BEDD" transform="translate(100 138) scale(.32)"><circle cx="-40" cy="10" r="30"/><circle cx="0" cy="-8" r="40"/><circle cx="40" cy="10" r="30"/><rect x="-40" y="10" width="80" height="30"/></g></svg>`,
+  socks:(c,t)=>`<svg viewBox="0 0 200 200" aria-hidden="true"><path d="M70 22 L114 22 L114 116 Q114 138 136 140 L152 142 Q174 146 172 166 Q170 184 150 184 L100 184 Q70 184 70 152 Z" fill="${c}"/><rect x="66" y="18" width="52" height="24" rx="8" fill="${c}" style="filter:brightness(.92)"/><path d="M70 50 H114 M70 58 H114" stroke="${t}" stroke-width="4" opacity=".55"/></svg>`,
+  tote:(c,t)=>`<svg viewBox="0 0 200 200" aria-hidden="true"><path d="M74 72 Q74 28 100 28 Q126 28 126 72" fill="none" stroke="${c}" stroke-width="8" style="filter:brightness(.85)"/><rect x="44" y="66" width="112" height="118" rx="14" fill="${c}"/>${mark(100,132,17,t)}</svg>`,
+  scrunchie:(c,t)=>`<svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="58" fill="none" stroke="${c}" stroke-width="34"/><circle cx="100" cy="100" r="58" fill="none" stroke="rgba(0,0,0,.08)" stroke-width="34" stroke-dasharray="6 14"/></svg>`
+};
+const products=[
+  {n:"Cloud Fleece Hoodie",c:"Lavender Haze",p:58,a:"hoodie",f:"#C8BEDD",t:ink,b:"BESTSELLER"},
+  {n:"Sunday Sweatpants",c:"Oat Heather",p:52,a:"sweats",f:"#D9CDBB",t:ink},
+  {n:"Lazy Sunday Crewneck",c:"Sage Nap",p:48,a:"crew",f:"#9DB09A",t:"#F8F4EC",b:"NEW"},
+  {n:"Nap Tee (boxy fit)",c:"Butter",p:34,a:"tee",f:"#F2DC8C",t:ink},
+  {n:"Soft Rib Beanie",c:"Mocha",p:28,a:"beanie",f:"#5A463D",t:ink},
+  {n:"Cloud Crew Socks",c:"Oat / Sage",p:16,a:"socks",f:"#E9E1D3",t:"#9DB09A"}
+];
+const cats=[["Hoodies & sweats","Hoodies · sweats · crews · tees","hoodie","#C8BEDD","#C8BEDD"],["Hats","Beanies · dad caps","beanie","#5A463D","#F2DC8C"],["Bags","Totes","tote","#D9CDBB","#E4DACB"],["Accessories","Socks · scrunchies · stickers","scrunchie","#9DB09A","#F8F4EC"]];
+document.getElementById('heroHoodie').innerHTML=art.hoodie("#E9E1D3",ink);
+document.getElementById('heroSweats').innerHTML=art.sweats("#E9E1D3",ink);
+document.getElementById('catGrid').innerHTML=cats.map(([n,s,a,f,bg])=>`<a class="cat" href="#shop" style="background:${bg}">${art[a](f,ink)}<b>${n}</b><small>${s}</small></a>`).join('');
+document.getElementById('prodGrid').innerHTML=products.map((x,k)=>`<article class="p"><div class="img">${art[x.a](x.f,x.t)}</div><div class="info">${x.b?`<span class="badge">${x.b}</span>`:''}<div class="row"><h3>${x.n}</h3><span class="price">$${x.p}</span></div><span class="col">${x.c} · sample</span><button type="button" data-k="${k}">Add to bag</button></div></article>`).join('');
+let count=0;const cc=document.getElementById('cartCount');
+document.getElementById('prodGrid').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;count++;cc.textContent=count;b.textContent='Added ✓';b.classList.add('done');setTimeout(()=>{b.textContent='Add to bag';b.classList.remove('done')},1600)});
+document.getElementById('signup').addEventListener('submit',e=>{e.preventDefault();const v=document.getElementById('email').value.trim();const m=document.getElementById('msg');if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){m.textContent='Enter a valid email, like you@email.com.';return}m.textContent="You're in the Stay In Club (prototype, nothing was sent).";e.target.reset()});
+</script>
