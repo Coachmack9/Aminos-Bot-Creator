@@ -17,8 +17,8 @@
 - **Platform:** Shopify.
 - **Startup budget:** $100 for samples.
 - **Name:** SOFT HOURS (lead pick; a quick web search found no clothing brand using it).
+- **Logo:** combo system. Lockup (cloud clock B + wordmark A) for header and packaging, A for prints and neck label, B as icon/embroidery, C as the Stay In Club label. Files in `store/brand/logos/`.
 - **Direction change (2026-11-11):** switched from Y2K retro (ANGELBYTE) to cozy loungewear. The old work is kept in git history.
 
 ## Still open
-- Owner to pick the SOFT HOURS logo (A, B or C)
 - USPTO trademark search + domain/handle check for SOFT HOURS

@@ -10,7 +10,8 @@ Backups: Mellow Den, Stay Soft.
 Dropped because of conflicts: Duvet Day (bedding line), Slow Morning Club (2025 trademark filing), Hush Hour (Hush UK), Snug Studio (existing label).
 **Before spending money:** run a USPTO Trademark Search, check that softhours.com and the @softhours handles on IG/TikTok are free, and file a trademark in class 25 (clothing).
 
-## Logos (`logos/`), pick one as primary
+## Logos (`logos/`): combo system (chosen)
+- **Lockup (B + A)** `softhours-lockup.svg`: site header, email header, packaging, hang tag front
 - **A · Puffy wordmark:** rounded lowercase "soft hours" with a butter moon; for the site header, prints and neck label
 - **B · Cloud clock:** icon for the favicon, social profile picture, beanie/cap embroidery and sock cuffs
 - **C · Stay In Club label:** sage stitched label for the back neck, hang tags and packaging stickers
