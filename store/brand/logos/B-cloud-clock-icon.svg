@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 160" role="img" aria-label="Concept B: cloud clock icon"><style>@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@700&amp;family=DM+Mono&amp;display=swap");</style>
+            <g fill="#C8BEDD">
+              <circle cx="72" cy="92" r="32"/><circle cx="112" cy="70" r="42"/><circle cx="152" cy="92" r="32"/><rect x="72" y="92" width="80" height="32"/>
+            </g>
+            <g stroke="#3E302A" stroke-width="7" stroke-linecap="round" fill="none">
+              <path d="M112 90 L112 66"/><path d="M112 90 L130 100"/>
+            </g>
+            <circle cx="112" cy="90" r="6" fill="#3E302A"/>
+          </svg>
