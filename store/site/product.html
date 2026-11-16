@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Cloud Fleece Hoodie · soft hours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=DM+Sans:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: two-column product page (gallery | buy box) that stacks on phones, with a sticky add-to-bag bar on mobile. Same oat/cocoa tokens as the home page. */
+:root{
+  --bg:#EFE8DC; --bg2:#E7DED0; --card:#F8F4EC; --fg:#3E302A; --muted:#7A6A60; --line:#DCD2C3;
+  --sage:#9DB09A; --butter:#F2DC8C; --lav:#C8BEDD; --cocoa:#7A5C4F; --btn:#3E302A; --btnfg:#F8F4EC; --err:#A83A2E;
+  --display:"Fredoka","Arial Rounded MT Bold",system-ui,sans-serif;
+  --body:"DM Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"DM Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1F1916; --bg2:#272019; --card:#2C241F; --fg:#F1EAE0; --muted:#BFB2A6; --line:#3D332C; --btn:#F2DC8C; --btnfg:#2A211C; --err:#F08A7E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1F1916; --bg2:#272019; --card:#2C241F; --fg:#F1EAE0; --muted:#BFB2A6; --line:#3D332C; --btn:#F2DC8C; --btnfg:#2A211C; --err:#F08A7E; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+img,svg{max-width:100%}
+[hidden]{display:none!important}
+a{color:inherit}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.in{max-width:1120px;margin:0 auto}
+h1,h2,h3{margin:0;text-wrap:balance}
+p{margin:0}
+button{font:inherit;cursor:pointer;color:inherit}
+:focus-visible{outline:2px solid var(--cocoa);outline-offset:3px}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+.proto{background:var(--bg2);color:var(--muted);font-family:var(--mono);font-size:.72rem;text-align:center;padding-block:6px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;font-family:var(--display);font-weight:700;font-size:1.55rem;letter-spacing:-.02em}
+.logo svg{width:40px;height:auto}
+.cart{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:7px 14px;font-weight:600;font-size:.88rem}
+.cart b{background:var(--sage);color:#2A211C;border-radius:99px;min-width:20px;height:20px;display:inline-grid;place-items:center;font-size:.72rem}
+
+.crumbs{font-size:.85rem;color:var(--muted);padding-block:16px 4px}
+.crumbs a{text-decoration:none}
+.crumbs a:hover{color:var(--fg)}
+
+.pdp{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(20px,4vw,48px);padding-block:12px 48px;align-items:start}
+.pdp>*{min-width:0}
+@media (max-width:860px){.pdp{grid-template-columns:1fr}}
+
+.gallery{display:grid;gap:12px}
+.main{background:var(--bg2);border-radius:32px;aspect-ratio:1/1;max-width:100%;display:grid;place-items:center;overflow:hidden;position:relative}
+.main svg{width:74%;height:auto}
+.main .view{position:absolute;left:16px;top:16px;font-family:var(--mono);font-size:.72rem;background:var(--card);border-radius:99px;padding:4px 10px;color:var(--muted)}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.thumbs button{background:var(--bg2);border:2px solid transparent;border-radius:18px;aspect-ratio:1/1;padding:8px;display:grid;place-items:center}
+.thumbs button svg{width:100%;height:auto}
+.thumbs button[aria-pressed="true"]{border-color:var(--cocoa)}
+
+.buy{display:grid;gap:18px;position:sticky;top:84px}
+@media (max-width:860px){.buy{position:static}}
+.buy h1{font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,4.4vw,2.6rem);line-height:1.05;letter-spacing:-.02em}
+.price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.price b{font-size:1.4rem}
+.price span{color:var(--muted);font-size:.92rem}
+.price a{color:var(--cocoa);font-weight:600}
+.lede{color:var(--muted)}
+.opt{display:grid;gap:8px}
+.opt .lbl{display:flex;justify-content:space-between;gap:12px;font-weight:600;font-size:.92rem}
+.opt .lbl span{font-weight:400;color:var(--muted)}
+.swatches{display:flex;gap:10px;flex-wrap:wrap}
+.swatches button{width:40px;height:40px;border-radius:50%;border:2px solid var(--line);padding:0;box-shadow:inset 0 0 0 3px var(--bg)}
+.swatches button[aria-checked="true"]{border-color:var(--fg)}
+.sizes{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+@media (max-width:460px){.sizes{grid-template-columns:repeat(4,1fr)}}
+.sizes button{background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:10px 0;font-weight:600;font-size:.9rem}
+.sizes button[aria-checked="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.sizes.bad button{border-color:var(--err)}
+.linkbtn{background:none;border:0;padding:0;text-decoration:underline;color:var(--muted);font-size:.88rem}
+.fit{font-size:.9rem;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 14px}
+.err{color:var(--err);font-size:.88rem;min-height:1.2em}
+.actions{display:flex;gap:10px}
+.qty{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:99px}
+.qty button{background:none;border:0;width:40px;height:48px;font-size:1.2rem}
+.qty output{min-width:24px;text-align:center;font-weight:700}
+.add{flex:1;background:var(--btn);color:var(--btnfg);border:0;border-radius:99px;font-weight:700;padding:14px 20px}
+.add.done{background:var(--sage);color:#2A211C}
+.ship{display:grid;gap:6px;font-size:.88rem;color:var(--muted)}
+.ship div::before{content:"☁ ";color:var(--sage)}
+
+.setcard{background:var(--sage);color:#2A211C;border-radius:24px;padding:16px;display:grid;grid-template-columns:72px 1fr;gap:14px;align-items:center}
+.setcard .ic{background:#F8F4EC;border-radius:16px;aspect-ratio:1/1;display:grid;place-items:center;padding:6px}
+.setcard .ic svg{width:100%;height:auto}
+.setcard b{font-family:var(--display);font-weight:600;font-size:1.05rem;display:block}
+.setcard p{font-size:.88rem}
+.setcard label{display:flex;gap:8px;align-items:center;margin-top:6px;font-weight:600;font-size:.9rem;cursor:pointer}
+.setcard input{width:18px;height:18px;accent-color:#3E302A}
+
+details{border-top:1px solid var(--line);padding-block:4px}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;padding-block:12px;font-weight:600}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--display);font-size:1.2rem;line-height:1}
+details[open] summary::after{content:"–"}
+details ul{margin:0 0 12px;padding-left:18px;color:var(--muted);font-size:.93rem}
+details p{color:var(--muted);font-size:.93rem;margin-bottom:12px}
+
+section{padding-block:clamp(32px,6vw,56px);border-top:1px solid var(--line)}
+section h2{font-family:var(--display);font-weight:600;font-size:clamp(1.4rem,3.4vw,1.9rem);margin-bottom:18px}
+.reviews{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:24px;display:grid;gap:10px;justify-items:start}
+.reviews p{color:var(--muted)}
+.btn2{background:transparent;border:1.5px solid var(--line);border-radius:99px;padding:10px 20px;font-weight:600}
+.more{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:640px){.more{grid-template-columns:1fr 1fr}}
+.more a{text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:grid}
+.more .im{background:var(--bg2);aspect-ratio:1/1;display:grid;place-items:center}
+.more .im svg{width:70%;height:auto}
+.more div.t{padding:12px 14px;display:flex;justify-content:space-between;gap:10px;font-weight:600;font-size:.93rem}
+
+dialog{border:0;border-radius:24px;padding:0;max-width:min(560px,calc(100vw - 32px));width:100%;background:var(--card);color:var(--fg)}
+dialog::backdrop{background:rgba(31,25,22,.5)}
+.dlg{padding:22px;display:grid;gap:14px}
+.dlg header{position:static;background:none;border:0;display:flex;justify-content:space-between;align-items:center}
+.dlg h3{font-family:var(--display);font-weight:600;font-size:1.3rem}
+.dlg .x{background:none;border:1px solid var(--line);border-radius:99px;width:36px;height:36px}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:.92rem}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left}
+th{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:var(--muted);font-weight:400}
+.note{font-size:.84rem;color:var(--muted)}
+
+.sticky{display:none}
+@media (max-width:860px){
+  .sticky{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:6;gap:12px;align-items:center;justify-content:space-between;background:var(--card);border-top:1px solid var(--line);padding-block:10px calc(10px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .sticky b{font-weight:700}
+  .sticky small{display:block;color:var(--muted);font-size:.8rem}
+  .sticky .add{flex:0 0 auto}
+  footer{padding-bottom:96px!important}
+}
+footer{border-top:1px solid var(--line);padding-block:28px 36px;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+
+<div class="proto gut">PROTOTYPE · product page template · photos, fabric specs and size chart get replaced with your supplier's</div>
+
+<header class="gut">
+  <div class="in bar">
+    <a class="logo" href="index.html" aria-label="soft hours home"><svg viewBox="40 28 144 96" aria-hidden="true"><g fill="#C8BEDD"><circle cx="72" cy="92" r="32"/><circle cx="112" cy="70" r="42"/><circle cx="152" cy="92" r="32"/><rect x="72" y="92" width="80" height="32"/></g><g stroke="#3E302A" stroke-width="8" stroke-linecap="round" fill="none"><path d="M112 90 L112 66"/><path d="M112 90 L130 100"/></g><circle cx="112" cy="90" r="7" fill="#3E302A"/></svg>soft hours</a>
+    <button class="cart" type="button" aria-label="Bag">Bag <b id="cartCount">0</b></button>
+  </div>
+</header>
+
+<main class="gut">
+  <div class="in">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> / <a href="index.html#shop">Hoodies &amp; sweats</a> / <span>Cloud Fleece Hoodie</span></nav>
+
+    <div class="pdp">
+      <div class="gallery">
+        <div class="main" id="main" aria-live="polite"><span class="view" id="viewLbl">Front</span><div id="mainArt"></div></div>
+        <div class="thumbs" id="thumbs" role="group" aria-label="Product views"></div>
+      </div>
+
+      <div class="buy">
+        <div style="display:grid;gap:8px">
+          <span class="eyebrow">The Cloud Collection</span>
+          <h1>Cloud Fleece Hoodie</h1>
+          <div class="price"><b>$58</b><span>or $99 as the Cloud Set with matching sweats</span></div>
+        </div>
+        <p class="lede">An oversized hoodie in brushed-back fleece with a roomy hood, a kangaroo pocket and "soft hours" on the chest. Made for slow mornings and long naps.</p>
+
+        <div class="opt">
+          <div class="lbl">Color <span id="colorName">Lavender Haze</span></div>
+          <div class="swatches" id="swatches" role="radiogroup" aria-label="Color"></div>
+        </div>
+
+        <div class="opt">
+          <div class="lbl">Size <button class="linkbtn" type="button" id="openGuide">Size guide</button></div>
+          <div class="sizes" id="sizes" role="radiogroup" aria-label="Size"></div>
+          <div class="fit">Relaxed, oversized fit. If you want it closer to the body, size down.</div>
+          <div class="err" id="sizeErr" role="alert"></div>
+        </div>
+
+        <div class="setcard">
+          <div class="ic" id="setArt"></div>
+          <div>
+            <b>Complete the Cloud Set</b>
+            <p>Add the Sunday Sweatpants in <span id="setColor">Lavender Haze</span> and pay $99 for both, instead of $110.</p>
+            <label for="addSet"><input type="checkbox" id="addSet"> Add matching sweats (+$41)</label>
+          </div>
+        </div>
+
+        <div class="actions">
+          <div class="qty" aria-label="Quantity"><button type="button" id="minus" aria-label="Decrease quantity">−</button><output id="qty">1</output><button type="button" id="plus" aria-label="Increase quantity">+</button></div>
+          <button class="add" type="button" id="addBtn">Add to bag · $58</button>
+        </div>
+
+        <div class="ship">
+          <div>Made to order in the USA. Ships in 3–7 business days.</div>
+          <div>Free U.S. shipping on orders over $75.</div>
+        </div>
+
+        <div>
+          <details open><summary>Details &amp; fabric</summary><ul>
+            <li>Brushed-back fleece, about 8.5 oz (cotton/poly blend)</li>
+            <li>Lined hood with drawcords, kangaroo pocket, ribbed cuffs and hem</li>
+            <li>Puffy "soft hours" print on the chest, Stay In Club label on the back neck</li>
+            <li class="note">Final weight and blend come from your chosen supplier's blank.</li>
+          </ul></details>
+          <details><summary>Care</summary><ul>
+            <li>Machine wash cold, inside out, with similar colors</li>
+            <li>Tumble dry low or hang dry to keep it soft</li>
+            <li>Don't iron the print</li>
+          </ul></details>
+          <details><summary>Shipping &amp; made to order</summary><p>We print each piece after you order it, so nothing sits in a warehouse. Production takes 2–5 business days, and U.S. delivery usually takes another 3–5.</p></details>
+          <details><summary>Returns</summary><p>Policy coming soon. Made-to-order brands usually replace items with defects or print errors, and offer exchanges or store credit for size swaps.</p></details>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="in">
+    <h2>Reviews</h2>
+    <div class="reviews">
+      <b>No reviews yet</b>
+      <p>Reviews from real customers will show up here after launch.</p>
+      <button class="btn2" type="button" disabled>Write a review</button>
+    </div>
+  </section>
+
+  <section class="in">
+    <h2>You might also like</h2>
+    <div class="more" id="more"></div>
+  </section>
+</main>
+
+<footer class="gut"><div class="in">© 2026 SOFT HOURS · Prototype for review · Prices and products are placeholders</div></footer>
+
+<div class="sticky" id="sticky">
+  <div><b>Cloud Fleece Hoodie</b><small id="stickyInfo">Lavender Haze · pick a size</small></div>
+  <button class="add" type="button" id="addBtn2">Add · $58</button>
+</div>
+
+<dialog id="guide" aria-labelledby="guideTitle">
+  <div class="dlg">
+    <header><h3 id="guideTitle">Size guide</h3><button class="x" type="button" id="closeGuide" aria-label="Close">×</button></header>
+    <p class="note">Measurements in inches, taken flat. Relaxed, oversized fit.</p>
+    <div class="tw"><table>
+      <thead><tr><th>SIZE</th><th>CHEST (WIDTH)</th><th>BODY LENGTH</th><th>SLEEVE</th></tr></thead>
+      <tbody id="sizeRows"></tbody>
+    </table></div>
+    <p class="note">Sample measurements. Replace them with the size chart for your supplier's blank before launch.</p>
+  </div>
+</dialog>
+
+<script>
+const ink="#3E302A";
+const mark=(x,y,s,c)=>`<text x="${x}" y="${y}" text-anchor="middle" font-family="Fredoka, Arial Rounded MT Bold, sans-serif" font-weight="700" font-size="${s}" fill="${c}">soft hours</text>`;
+const hoodieBody=c=>`<path d="M60 38 Q70 32 82 32 Q100 48 118 32 Q130 32 140 38 L178 76 Q170 88 160 92 L148 82 L150 184 Q100 192 50 184 L52 82 L40 92 Q30 88 22 76 Z" fill="${c}"/>`;
+const art={
+  front:(c)=>`<svg viewBox="0 0 200 200" aria-hidden="true"><path d="M72 36 Q100 4 128 36 L120 46 Q100 32 80 46 Z" fill="${c}" style="filter:brightness(.9)"/>${hoodieBody(c)}<path d="M74 138 L126 138 Q132 156 130 168 L70 168 Q68 156 74 138Z" fill="rgba(0,0,0,.08)"/><path d="M94 46 L92 72 M106 46 L108 72" stroke="${ink}" stroke-width="2.5" stroke-linecap="round" opacity=".6"/>${mark(100,112,15,ink)}</svg>`,
+  back:(c)=>`<svg viewBox="0 0 200 200" aria-hidden="true">${hoodieBody(c)}<path d="M66 40 Q100 -2 134 40 Q120 66 100 70 Q80 66 66 40Z" fill="${c}" style="filter:brightness(.93)"/><rect x="86" y="76" width="28" height="14" rx="4" fill="#9DB09A"/><text x="100" y="86" text-anchor="middle" font-family="DM Mono, monospace" font-size="4.5" fill="#F8F4EC">SOFT HOURS</text></svg>`,
+  detail:(c)=>`<svg viewBox="0 0 200 200" aria-hidden="true"><defs><pattern id="fl" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="1.6" fill="rgba(255,255,255,.35)"/></pattern><clipPath id="cc"><circle cx="100" cy="100" r="78"/></clipPath></defs><g clip-path="url(#cc)"><rect width="200" height="200" fill="${c}"/><rect width="200" height="200" fill="url(#fl)"/><path d="M0 132 Q100 118 200 132 L200 200 L0 200Z" fill="${c}" style="filter:brightness(.92)"/>${mark(100,96,26,ink)}</g><circle cx="100" cy="100" r="78" fill="none" stroke="${ink}" stroke-width="2" opacity=".3"/></svg>`,
+  set:(c)=>`<svg viewBox="0 0 200 200" aria-hidden="true"><g transform="translate(6 10) scale(.5)"><path d="M72 36 Q100 4 128 36 L120 46 Q100 32 80 46 Z" fill="${c}" style="filter:brightness(.9)"/>${hoodieBody(c)}${mark(100,112,15,ink)}</g><g transform="translate(96 10) scale(.5)"><rect x="56" y="18" width="88" height="18" rx="8" fill="${c}" style="filter:brightness(.92)"/><path d="M58 34 L142 34 Q150 100 150 168 L110 170 Q104 110 100 76 Q96 110 90 170 L50 168 Q50 100 58 34Z" fill="${c}"/><rect x="48" y="164" width="44" height="16" rx="7" fill="${c}" style="filter:brightness(.9)"/><rect x="108" y="164" width="44" height="16" rx="7" fill="${c}" style="filter:brightness(.9)"/></g><text x="100" y="140" text-anchor="middle" font-family="DM Mono, monospace" font-size="9" fill="${ink}" opacity=".7">THE CLOUD SET</text></svg>`,
+  sweats:(c)=>`<svg viewBox="0 0 200 200" aria-hidden="true"><rect x="56" y="18" width="88" height="18" rx="8" fill="${c}" style="filter:brightness(.92)"/><path d="M58 34 L142 34 Q150 100 150 168 L110 170 Q104 110 100 76 Q96 110 90 170 L50 168 Q50 100 58 34Z" fill="${c}"/></svg>`,
+  crew:(c,t)=>`<svg viewBox="0 0 200 200" aria-hidden="true"><path d="M62 32 Q72 28 84 28 Q100 40 116 28 Q128 28 138 32 L176 104 Q168 112 160 114 L146 80 L148 176 Q100 184 52 176 L54 80 L40 114 Q32 112 24 104 Z" fill="${c}"/>${mark(100,88,16,t)}</svg>`,
+  beanie:(c)=>`<svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="44" r="16" fill="${c}" style="filter:brightness(1.1)"/><path d="M48 144 Q46 56 100 56 Q154 56 152 144 Z" fill="${c}"/><rect x="42" y="118" width="116" height="40" rx="14" fill="${c}" style="filter:brightness(.9)"/><g fill="#C8BEDD" transform="translate(100 138) scale(.32)"><circle cx="-40" cy="10" r="30"/><circle cx="0" cy="-8" r="40"/><circle cx="40" cy="10" r="30"/><rect x="-40" y="10" width="80" height="30"/></g></svg>`,
+  socks:(c,t)=>`<svg viewBox="0 0 200 200" aria-hidden="true"><path d="M70 22 L114 22 L114 116 Q114 138 136 140 L152 142 Q174 146 172 166 Q170 184 150 184 L100 184 Q70 184 70 152 Z" fill="${c}"/><rect x="66" y="18" width="52" height="24" rx="8" fill="${c}" style="filter:brightness(.92)"/><path d="M70 50 H114 M70 58 H114" stroke="${t}" stroke-width="4" opacity=".55"/></svg>`
+};
+const colors=[["Lavender Haze","#C8BEDD"],["Oat Heather","#D9CDBB"],["Sage Nap","#9DB09A"],["Mocha","#6B5448"]];
+const sizes=["XS","S","M","L","XL","2XL","3XL"];
+const chart=[["XS",20,26,32],["S",21,27,33],["M",22,28,34],["L",23,29,35],["XL",24.5,30,36],["2XL",26,31,37],["3XL",27.5,32,37.5]];
+const views=[["front","Front"],["back","Back"],["detail","Fleece detail"],["set","Cloud Set"]];
+let st={color:0,size:null,view:"front",qty:1};
+const $=id=>document.getElementById(id);
+
+function price(){return st.qty*(($("addSet").checked)?99:58)}
+function render(){
+  const c=colors[st.color][1];
+  $("mainArt").innerHTML=art[st.view](c);
+  $("viewLbl").textContent=views.find(v=>v[0]===st.view)[1];
+  $("thumbs").innerHTML=views.map(([k,l])=>`<button type="button" data-v="${k}" aria-pressed="${k===st.view}" aria-label="${l}">${art[k](c)}</button>`).join('');
+  $("colorName").textContent=colors[st.color][0];
+  $("setColor").textContent=colors[st.color][0];
+  $("setArt").innerHTML=art.sweats(c);
+  $("swatches").innerHTML=colors.map(([n,h],i)=>`<button type="button" role="radio" aria-checked="${i===st.color}" aria-label="${n}" data-c="${i}" style="background:${h}"></button>`).join('');
+  $("sizes").innerHTML=sizes.map(s=>`<button type="button" role="radio" aria-checked="${s===st.size}" data-s="${s}">${s}</button>`).join('');
+  $("qty").textContent=st.qty;
+  const p=price();
+  $("addBtn").textContent=`Add to bag · $${p}`;
+  $("addBtn2").textContent=`Add · $${p}`;
+  $("stickyInfo").textContent=`${colors[st.color][0]} · ${st.size?('size '+st.size):'pick a size'}`;
+}
+$("thumbs").addEventListener('click',e=>{const b=e.target.closest('button');if(b){st.view=b.dataset.v;render()}});
+$("swatches").addEventListener('click',e=>{const b=e.target.closest('button');if(b){st.color=+b.dataset.c;render()}});
+$("sizes").addEventListener('click',e=>{const b=e.target.closest('button');if(b){st.size=b.dataset.s;$("sizeErr").textContent="";$("sizes").classList.remove('bad');render()}});
+$("minus").onclick=()=>{st.qty=Math.max(1,st.qty-1);render()};
+$("plus").onclick=()=>{st.qty=Math.min(10,st.qty+1);render()};
+$("addSet").onchange=()=>{if($("addSet").checked)st.view="set";render()};
+let count=0;
+function add(){
+  if(!st.size){$("sizeErr").textContent="Pick a size to add this to your bag.";$("sizes").classList.add('bad');$("sizes").scrollIntoView({behavior:"smooth",block:"center"});return}
+  count+=st.qty*($("addSet").checked?2:1);$("cartCount").textContent=count;
+  const b=$("addBtn");b.textContent="Added to bag ✓";b.classList.add('done');
+  setTimeout(()=>{b.classList.remove('done');render()},1600);
+}
+$("addBtn").onclick=add;$("addBtn2").onclick=add;
+$("sizeRows").innerHTML=chart.map(r=>`<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('');
+const dlg=$("guide");
+$("openGuide").onclick=()=>{try{dlg.showModal()}catch(e){dlg.setAttribute('open','')}};
+$("closeGuide").onclick=()=>dlg.close();
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+$("more").innerHTML=[["Lazy Sunday Crewneck",48,art.crew("#9DB09A","#F8F4EC")],["Soft Rib Beanie",28,art.beanie("#5A463D")],["Cloud Crew Socks",16,art.socks("#E9E1D3","#9DB09A")]].map(([n,p,a])=>`<a href="index.html#shop"><div class="im">${a}</div><div class="t"><span>${n}</span><span>$${p}</span></div></a>`).join('');
+render();
+</script>
+</body>
+</html>
