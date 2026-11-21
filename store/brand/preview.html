@@ -1,0 +1,215 @@
+<title>SOFT HOURS Brand Board</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=DM+Sans:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a calm single column, like a mood board pinned above a bed. Logos sit on soft "pillow" stages; dark mode is the "after hours" version. */
+:root{
+  --bg:#EFE8DC; --surface:#F8F4EC; --fg:#3E302A; --muted:#7A6A60; --line:#DDD3C4;
+  --stage:#E4DACB; --sage:#9DB09A; --butter:#F2DC8C; --lav:#C8BEDD; --cocoa:#7A5C4F;
+  --ok:#3F7A4E; --warn:#9A6400; --risk:#A83A2E;
+  --display:"Fredoka","Arial Rounded MT Bold",system-ui,sans-serif;
+  --body:"DM Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"DM Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1F1916; --surface:#2A221E; --fg:#F1EAE0; --muted:#BFB2A6; --line:#3C322C; --stage:#2F2622;
+  --ok:#7CC28E; --warn:#E9B65A; --risk:#F08A7E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1F1916; --surface:#2A221E; --fg:#F1EAE0; --muted:#BFB2A6; --line:#3C322C; --stage:#2F2622;
+  --ok:#7CC28E; --warn:#E9B65A; --risk:#F08A7E; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6}
+.wrap{max-width:980px;margin:0 auto;padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:44px}
+h1,h2,h3{margin:0;text-wrap:balance}
+h2{font-family:var(--display);font-weight:600;font-size:1.45rem}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+p{margin:0;max-width:65ch}
+section{display:grid;gap:16px}
+.stage{background:var(--stage);border-radius:22px;display:grid;place-items:center;overflow:hidden}
+.stage svg{display:block;width:100%;height:auto}
+.hero{padding:clamp(28px,7vw,64px) 20px;gap:10px}
+.hero p{font-family:var(--mono);font-size:.82rem;letter-spacing:.12em;color:var(--muted);text-align:center}
+.wm{fill:var(--fg)}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.card .stage{border-radius:0;aspect-ratio:4/3;padding:24px}
+.card .txt{padding:16px 18px 18px;display:grid;gap:6px;align-content:start;min-width:0}
+.card h3{font-family:var(--display);font-weight:600;font-size:1.05rem}
+.card p{color:var(--muted);font-size:.92rem}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:.92rem}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:400}
+tr:last-child td{border-bottom:0}
+td.nm{font-family:var(--display);font-weight:600;white-space:nowrap}
+.pill{display:inline-block;font-family:var(--mono);font-size:.7rem;padding:2px 9px;border-radius:99px;border:1px solid currentColor;white-space:nowrap}
+.ok{color:var(--ok)}.warn{color:var(--warn)}.risk{color:var(--risk)}
+.sw{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.chip{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface)}
+.chip i{display:block;height:76px}
+.chip div{padding:10px 12px;font-size:.85rem}
+.chip b{display:block}
+.chip code{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.type{display:grid;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px}
+.type .row{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:baseline}
+.type .row>*{min-width:0}
+@media (max-width:520px){.type .row{grid-template-columns:1fr;gap:2px}}
+.voice{display:grid;gap:10px;padding:0;margin:0;list-style:none}
+.voice li{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+.note{font-size:.9rem;color:var(--muted)}
+</style>
+
+<div class="wrap">
+
+  <header style="display:grid;gap:12px">
+    <span class="eyebrow">Brand board · draft 2 · cozy loungewear, ages 17–29</span>
+    <div class="stage hero">
+      <svg viewBox="0 0 640 170" role="img" aria-label="soft hours wordmark">
+        <path d="M545 30 a26 26 0 1 0 22 40 a20 20 0 1 1 -22 -40z" fill="#F2DC8C"/>
+        <text class="wm" x="320" y="118" text-anchor="middle" font-family="Fredoka, Arial Rounded MT Bold, sans-serif" font-weight="700" font-size="104" letter-spacing="-2">soft hours</text>
+      </svg>
+      <p>STAY IN. STAY SOFT.</p>
+    </div>
+    <p class="note">New name: <b>SOFT HOURS</b>. It names the time you spend in comfort: slow mornings, late study nights, lazy Sundays. It's easy to say, works as a hashtag (#softhours), and sounds as relaxed as the clothes.</p>
+  </header>
+
+  <section>
+    <span class="eyebrow">Step 1 · Name shortlist</span>
+    <h2>Names I checked</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Name</th><th>Vibe</th><th>Quick conflict check</th><th>Call</th></tr></thead>
+      <tbody>
+        <tr><td class="nm">SOFT HOURS</td><td>Calm, self-care, "soft life."</td><td>Web search found no clothing brand with this name.</td><td><span class="pill ok">Lead</span></td></tr>
+        <tr><td class="nm">Mellow Den</td><td>Warm, homey, a little playful.</td><td>No brand match found.</td><td><span class="pill warn">Backup</span></td></tr>
+        <tr><td class="nm">Stay Soft</td><td>Friendly, works as a slogan.</td><td>No brand match, but it's a common phrase and hard to trademark.</td><td><span class="pill warn">Backup</span></td></tr>
+        <tr><td class="nm">Duvet Day</td><td>Cute, very British.</td><td>A "Duvet Day" bedding line already exists.</td><td><span class="pill risk">Drop</span></td></tr>
+        <tr><td class="nm">Slow Morning Club</td><td>Gentle, community feel.</td><td>A clothing trademark was filed in 2025.</td><td><span class="pill risk">Drop</span></td></tr>
+        <tr><td class="nm">Hush Hour</td><td>Quiet, sleepy.</td><td>Hush (UK) is an established loungewear brand.</td><td><span class="pill risk">Drop</span></td></tr>
+        <tr><td class="nm">Snug Studio</td><td>Cozy, crafty.</td><td>An existing loungewear label uses "The Snug Studio."</td><td><span class="pill risk">Drop</span></td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">This is a first pass from web search only. Before buying anything, run a USPTO.gov Trademark Search, check softhours.com and the @softhours handles, and file in class 25 (clothing).</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">Step 2 · Logo concepts</span>
+    <h2>Three directions</h2>
+    <div class="grid3">
+
+      <article class="card">
+        <div class="stage">
+          <svg viewBox="0 0 320 200" role="img" aria-label="Concept A: puffy wordmark">
+            <path d="M262 62 a14 14 0 1 0 12 22 a11 11 0 1 1 -12 -22z" fill="#F2DC8C"/>
+            <text class="wm" x="160" y="122" text-anchor="middle" font-family="Fredoka, Arial Rounded MT Bold, sans-serif" font-weight="700" font-size="52" letter-spacing="-1">soft hours</text>
+          </svg>
+        </div>
+        <div class="txt"><h3>A · Puffy wordmark</h3><p>Rounded lowercase with a little butter-yellow moon. Use it for the site header, chest and leg prints, and the neck label. Embroiders cleanly.</p></div>
+      </article>
+
+      <article class="card">
+        <div class="stage">
+          <svg viewBox="0 0 220 160" role="img" aria-label="Concept B: cloud clock icon">
+            <g fill="#C8BEDD">
+              <circle cx="72" cy="92" r="32"/><circle cx="112" cy="70" r="42"/><circle cx="152" cy="92" r="32"/><rect x="72" y="92" width="80" height="32"/>
+            </g>
+            <g stroke="#3E302A" stroke-width="7" stroke-linecap="round" fill="none">
+              <path d="M112 90 L112 66"/><path d="M112 90 L130 100"/>
+            </g>
+            <circle cx="112" cy="90" r="6" fill="#3E302A"/>
+          </svg>
+        </div>
+        <div class="txt"><h3>B · Cloud clock (icon)</h3><p>A cloud with clock hands set to "no rush." Use it for the favicon, profile picture, beanie and cap embroidery, and sock cuffs.</p></div>
+      </article>
+
+      <article class="card">
+        <div class="stage">
+          <svg viewBox="0 0 260 180" role="img" aria-label="Concept C: woven label badge">
+            <rect x="30" y="40" width="200" height="100" rx="18" fill="#9DB09A"/>
+            <rect x="40" y="50" width="180" height="80" rx="12" fill="none" stroke="#F8F4EC" stroke-width="2" stroke-dasharray="4 5"/>
+            <text x="130" y="96" text-anchor="middle" font-family="Fredoka, Arial Rounded MT Bold, sans-serif" font-weight="700" font-size="30" fill="#F8F4EC">soft hours</text>
+            <text x="130" y="118" text-anchor="middle" font-family="DM Mono, monospace" font-size="10" letter-spacing="2.5" fill="#F8F4EC">STAY IN CLUB · EST. 2026</text>
+          </svg>
+        </div>
+        <div class="txt"><h3>C · Stay In Club label</h3><p>A stitched label in sage. Use it for the back neck, side-seam tags, hang tags and the packaging sticker.</p></div>
+      </article>
+
+    </div>
+    <p class="note">These are drafts and use web fonts. Once you pick one, I'll convert the lettering to outlines for print and embroidery files.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">Chosen · Logo system (combo)</span>
+    <h2>All three, each with a job</h2>
+    <div class="stage" style="padding:clamp(24px,6vw,48px) 20px">
+      <svg viewBox="0 0 460 120" role="img" aria-label="soft hours lockup: cloud clock icon with wordmark" style="max-width:640px">
+        <g transform="translate(10 14) scale(.8) translate(-40 -28)">
+          <g fill="#C8BEDD"><circle cx="72" cy="92" r="32"/><circle cx="112" cy="70" r="42"/><circle cx="152" cy="92" r="32"/><rect x="72" y="92" width="80" height="32"/></g>
+          <g stroke="#3E302A" stroke-width="7" stroke-linecap="round" fill="none"><path d="M112 90 L112 66"/><path d="M112 90 L130 100"/></g>
+          <circle cx="112" cy="90" r="6" fill="#3E302A"/>
+        </g>
+        <text class="wm" x="140" y="82" font-family="Fredoka, Arial Rounded MT Bold, sans-serif" font-weight="700" font-size="60" letter-spacing="-1">soft hours</text>
+      </svg>
+    </div>
+    <div class="tbl"><table style="min-width:0">
+      <tbody>
+        <tr><td class="nm">Lockup (B + A)</td><td>Site header, email header, packaging, the front of the hang tag</td></tr>
+        <tr><td class="nm">A · Wordmark</td><td>Chest and leg prints, the neck label, anywhere the icon would crowd the space</td></tr>
+        <tr><td class="nm">B · Cloud clock</td><td>Favicon, social profile picture, beanie and cap embroidery, sock cuffs</td></tr>
+        <tr><td class="nm">C · Stay In Club label</td><td>Back neck, side-seam tag, packaging sticker, Stay In Club perks</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Step 3 · Palette</span>
+    <h2>Colors</h2>
+    <div class="sw">
+      <div class="chip"><i style="background:#EFE8DC"></i><div><b>Oat Milk</b><code>#EFE8DC</code></div></div>
+      <div class="chip"><i style="background:#3E302A"></i><div><b>Mocha</b><code>#3E302A</code></div></div>
+      <div class="chip"><i style="background:#9DB09A"></i><div><b>Sage Nap</b><code>#9DB09A</code></div></div>
+      <div class="chip"><i style="background:#F2DC8C"></i><div><b>Butter</b><code>#F2DC8C</code></div></div>
+      <div class="chip"><i style="background:#C8BEDD"></i><div><b>Lavender Haze</b><code>#C8BEDD</code></div></div>
+      <div class="chip"><i style="background:#7A5C4F"></i><div><b>Cocoa</b><code>#7A5C4F</code></div></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Step 4 · Type</span>
+    <h2>Fonts (all free on Google Fonts)</h2>
+    <div class="type">
+      <div class="row"><span class="eyebrow">Display</span><span style="font-family:var(--display);font-weight:700;font-size:1.7rem">the cloud set is back</span></div>
+      <div class="row"><span class="eyebrow">Body</span><span>Brushed-back fleece, relaxed oversized fit, and a soft washed color. Printed in the USA after you order it.</span></div>
+      <div class="row"><span class="eyebrow">Labels</span><span style="font-family:var(--mono);font-size:.9rem">SIZE M · COTTON/POLY FLEECE · MADE ON DEMAND</span></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Step 5 · Voice</span>
+    <h2>How the brand talks</h2>
+    <p>Warm, calm and a little funny. Lowercase on social. It sounds like a friend telling you to take a break.</p>
+    <ul class="voice">
+      <li>cancel your plans. we made sweats for that.</li>
+      <li>soft hours are now open. no closing time.</li>
+      <li>made to order, so it's made just for you. no warehouse, no waste.</li>
+      <li>the cloud set: for 8am classes and 8pm naps.</li>
+      <li>reminder: rest is productive. so is this hoodie.</li>
+    </ul>
+  </section>
+
+  <section>
+    <span class="eyebrow">Decisions locked</span>
+    <h2>Where we are</h2>
+    <div class="tbl"><table style="min-width:0">
+      <tbody>
+        <tr><td>Style</td><td>Cozy loungewear (replaces Y2K retro)</td></tr>
+        <tr><td>Logo</td><td>Combo: lockup (B + A) in the header, A for prints, B as the icon, C as the label</td></tr>
+        <tr><td>Products</td><td>Apparel, hats, bags, accessories</td></tr>
+        <tr><td>Price tier</td><td>Mid ($30–60): tee $34, sweats $52, hoodie $58</td></tr>
+        <tr><td>Inventory</td><td>Print-on-demand, U.S. suppliers (loungewear search in progress)</td></tr>
+        <tr><td>Platform</td><td>Shopify</td></tr>
+        <tr><td>Budget</td><td>$100 for samples</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+</div>
